@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+    <meta charset="utf-8">
+    <title>Simple JavaScript Slideshow Example</title>
+    
+    <style type="text/css">
+      a {	text-decoration: none; }
+
+      img { border: 0px; }
+
+      #pic { -webkit-box-shadow: 5px 5px 10px rgba(58, 51, 50, 0.62);
+             -moz-box-shadow: 5px 5px 10px rgba(58, 51, 50, 0.62);
+             box-shadow: 5px 5px 10px rgba(58, 51, 50, 0.62); }
+
+      body { background: #619C80; }
+
+      #content { text-align: center;
+                 margin-top: 0px; }
+				 
+      #lbl {font-size: larger; }			
+    </style>
+    
+ </head>
+ <body>
+
+
+<section id="content">
+  <!--  Place the first image/slide here  -->
+  <img src="slides/slide01.png" id="pic" alt="The Mayan Society - Slide 1" title="The Mayan Society - Slide 1">
+  <br>
+  <!--  Place the caption for the first image/slide
+   here  -->
+  <article id="lbl">The Mayan Society</article>
+  <p>
+  <a href="#" onClick="slideshowHome(); return false;"><img src="nav/home.png" alt="Home" title="Home" /></a>&nbsp;&nbsp;&nbsp;
+  <a href="#" onclick="slideshowBack(); return false;"><img src="nav/prev.png" alt="Previous" title="Previous" /></a>
+  <a href="#" onclick="slideshowUp(); return false;"><img src="nav/next.png" alt="Next" title="Next" /></a>
+</section>
+
+    
+ <script type="text/javascript" language="javascript">
+
+var num=0;
+
+// image source, alt text, caption text
+imgArray = [
+  ['slides/slide01.png', 'The Mayan Society - Slide 1', 'The Mayan Society'],
+  ['slides/slide02.png', 'Geography - Slide 2', 'Geography'],
+  ['slides/slide03.png', 'Lowlands - Slide 3', 'Lowlands'],
+  ['slides/slide04.png', 'Highlands vs Lowlands - Slide 4', 'Highlands vs Lowlands'],
+  ['slides/slide05.png', 'Dry Season - Slide 5', 'Dry Season'],
+  ['slides/slide06.png', 'The Rivers - Slide 6', 'The Rivers'],
+  ['slides/slide07.png', 'The Rain Forest - Slide 7', 'The Rain Forest'],
+  ['slides/slide08.png', 'The Soil - Slide 8', 'The Soil'],
+  ['slides/slide09.png', 'Geographical Dispersion - Slide 9', 'Geographical Dispersion'],
+  ['slides/slide10.png', 'Mayan History - Classical Period - Slide 10', 'Mayan History - Classical Period'],
+  ['slides/slide11.png', 'Mayan History - Classical Period - Slide 11', 'Mayan History - Classical Period'],
+  ['slides/slide12.png', 'Mayan Agriculture - Slide 12', 'Mayan Agriculture'],
+  ['slides/slide13.png', 'Mayan Agriculture cont. - Slide 13', 'Mayan Agriculture cont.'],
+  ['slides/slide14.png', 'Cenotes - Slide 14', 'Cenotes'],
+  ['slides/slide15.png', 'Mayan Religion - Slide 15', 'Mayan Religion']
+  ['slides/slide16.png', 'Mayan Religion - Slide 16', 'Mayan Religion']  
+]
+
+function slideshow(slide_num) {
+  document.getElementById('pic').src=imgArray[slide_num][0];
+  document.getElementById('pic').title=imgArray[slide_num][1];
+  document.getElementById('pic').alt=imgArray[slide_num][1];
+  document.getElementById('lbl').innerHTML=imgArray[slide_num][2];
+  
+}
+
+function slideshowUp() {
+  num++;
+  num = num % imgArray.length;
+  slideshow(num);
+}
+
+function slideshowBack() {
+  num--;
+  if (num < 0) {num=imgArray.length-1;}
+  num = num % imgArray.length;
+  slideshow(num);
+}
+
+function slideshowHome() {
+	num = 0;
+	slideshow(num);
+}
+
+</script>
+
+ </body>
+</html>
